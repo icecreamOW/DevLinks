@@ -1,0 +1,178 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box; /*tamanho da borda*/ /*se eu quiser colocar padding(preenchimento interno) dentro da caixa CONTAINER, o width acaba sendo invalidado, por isso a propriedade medida do tamanho da caixa: border box(para que seja medida atravez da borda da caixa. quando a medida vem da borda, ele mantem o width e qualquer preenchimento_padding interno vai se virar pra colocar dentro*/
+}
+
+:root {
+  --text-color: white;
+  --bg-url: url(./assets/bg-mobile.jpg);
+  --stroke-color: rgba(255, 255, 255, 0.5);
+  --surface-color: rgba(225, 225, 225, 0.05);
+  --surface-color-hover: rgba(0, 0, 0, 0.02);
+  --highlight-color: rgba(255, 255, 255, 0.2);
+  --switch-bg-url: url(./assets/MoonStars.svg);
+}
+
+.light {
+  --text-color: black;
+  --bg-url: url(./assets/bg-mobile-light.jpg);
+  --stroke-color: rgba(0, 0, 0, 0.5);
+  --surface-color: rgba(0, 0, 0, 0.05);
+  --surface-color-hover: rgba(0, 0, 0, 0.02);
+  --highlight-color: rgba(0, 0, 0, 0.1);
+  --switch-bg-url: url(./assets/sun.svg)
+}
+
+body {
+  background-image: var(--bg-url);
+  background-repeat: no-repeat;
+  background-position: top center;
+  background-size: cover;
+
+  /*atalho - juntar tudo acima num só:
+  background: color image repeat position/siza
+  que ficaria:
+  background: url(./assets/bg-mobile.jpg) no-repeat top center/cover;
+*/
+}
+/*
+  ./ é falar que ta dentro da atual pasta
+  */
+
+body * {
+  font-family: "inter", sans-serif;
+  color: var(--text-color);
+}
+
+#container {
+  width: 360px;
+  /*height: 712px; nao precisa colocar, ele acompanha os elementos dentro da caixa -- altura precisa ser fluida para diferentes tipos de telas*/
+  /*border: 1px solid #eb0000;*/
+  /* margin: auto; /* margin-right e margin-left pode virar margin-auto se as duas forem auto ---  margin top e embaixo nao sao automaticas*/
+  /* margin como um relogio para 4 medidas - top right bottom left
+  para duas medidas - (em cima embaixo) (nas laterais)
+  para tres medidas - (em cima) (nas laterais) (embaixo)
+  O margin é o espaço entre um elemento e seus vizinhos, enquanto o padding é o espaço entre o conteúdo do elemento e sua borda
+  */
+  margin: 56px auto 0px; /*então, para 3 medidas ficaram: em cima, nas laterais e embaixo*/
+  padding: 0 24px;
+}
+
+#profile {
+  text-align: center; /* profile é elemento inline, por isso usa text-align*/
+  padding: 24px;
+}
+
+#profile img {
+  width: 112px;
+}
+
+/* em elementos inline nao consigo colocar margem auto --- se for inline pode usar text-align*/
+
+#profile p {
+  font-weight: 500;
+  /*font-size: 16px tamanho da fonte padrão dos navegadores é 16px entao não precisa colocar */
+  line-height: 24px; /*altura de linha*/
+  margin-top: 8px;
+}
+
+/*botão*/
+#switch {
+  position: relative;
+  width: 64px;
+  margin: 4px auto;
+}
+
+#switch button {
+  width: 32px;
+  height: 32px;
+  background: white var(--switch-bg-url) no-repeat center; /* background: colocar cor e image -- background-color: colocar só cor*/
+  border: 0;
+  border-radius: 50%;
+
+  /*andares/layers/prédio*/
+  position: absolute;
+  top: 50%;
+  left: 0;
+  z-index: 1; /*layer do botão:1 - layer do span:0*/
+  transform: translateY(-50%);
+}
+.light #switch button {
+  right: 0;
+  left: initial;
+}
+
+#switch span {
+  display: block;
+  width: 64px;
+  height: 24px;
+  background: var(--surface-color);
+  border: 1px solid var(--stroke-color);
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+  border-radius: 9999px;
+}
+
+
+/*links*/
+ul {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 16px; /*Espaço entre as colunas*/
+  padding: 24px 0;
+}
+
+ul li a {
+  border: 1px solid var(--stroke-color);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 16px 24px;
+  background: var(--surface-color); /*rgba - red green blue e transparência*/
+  border-radius: 8px; /*arredondamento de borda*/
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+  text-decoration: none;
+  font-weight: 500;
+
+  transition: background 0.2s; /*suavizar a passada de mouse*/
+}
+/*display block posso alinhar com: text align
+display flex posso alinhar com: justify-content  VERTICAL
+display flex posso alinhar com: align items HORIZONTAL*/
+
+/*(:hover) se classifica no css como pseudo-selector   --- para qnd quando passa o mouse em cima*/
+/*Os pseudosseletores são uma forma de selecionar elementos HTML com base em seu estado ou posição em relação a outros elementos.*/
+ul li a:hover {
+  background: var(--surface-color-hover);
+  border: 1.5px solid var(--text-color);
+}
+
+/*social links*/
+#social-links {
+  display: flex;
+  padding: 24px 0; /*cima/embaixo e nas laterais*/
+  font-size: 24px;
+  justify-content: center;
+}
+
+#social-links a {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 16px;
+  transition: background 0.2s;
+  border-radius: 50%;
+}
+
+#social-links a:hover {
+  background: var(--highlight-color);
+}
+
+footer {
+  padding: 24px 0;
+  text-align: center;
+  font-size: 14px;
+}
