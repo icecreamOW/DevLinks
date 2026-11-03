@@ -46,7 +46,9 @@ body * {
 }
 
 #container {
-  width: 360px;
+  width: 100%;
+  max-width: 588px;
+  /*width: 360px; vou trocar width px por porcentro*/
   /*height: 712px; nao precisa colocar, ele acompanha os elementos dentro da caixa -- altura precisa ser fluida para diferentes tipos de telas*/
   /*border: 1px solid #eb0000;*/
   /* margin: auto; /* margin-right e margin-left pode virar margin-auto se as duas forem auto ---  margin top e embaixo nao sao automaticas*/
