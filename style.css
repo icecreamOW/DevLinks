@@ -30,6 +30,8 @@ body {
   background-position: top center;
   background-size: cover;
 
+  height: 100vh; /* altura total disponivel da tela - viewport height (altura da área de visualização)*/
+
   /*atalho - juntar tudo acima num só:
   background: color image repeat position/siza
   que ficaria:
@@ -177,4 +179,15 @@ footer {
   padding: 24px 0;
   text-align: center;
   font-size: 14px;
+}
+
+/*media queries - tudo o que começa com @ = at rules*/
+@media (min-width:700px){
+  :root {
+    --bg-url: url(./assets/bg-desktop.jpg)
+  }
+
+  .light {
+    --bg-url: url(./assets/bg-desktop-light.jpg)
+  }
 }
